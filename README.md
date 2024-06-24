@@ -29,6 +29,16 @@ I have Create Api for OAuth using Gmail and Outlook.after then Send mail for the
 - we can direct used for mail integeration for Outlook
 3) OpenAi integeration and Auto Reply for them Integerasted,Not Interested and More Interested
 - we can OpenAi can Context for Api call for them
+
+## Referance
+https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols
+https://learn.microsoft.com/en-us/graph/api/resources/message?view=graph-rest-1.0
+https://console.cloud.google.com/welcome?project=reachinapi
+https://platform.openai.com/playground/chat?models=gpt-3.5-turbo-16k
+https://portal.azure.com/#home
+https://www.postman.com/microsoftgraph/workspace/microsoft-graph/request/455214-4483104f-691f-4839-82de-e3eab8575aa0
+
+  
   
 
 

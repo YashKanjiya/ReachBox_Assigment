@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { classifyEmail, generateResponse } from '../services/openAIService';
-import { sendEmailGmail } from '../services/googleService';
-import { sendEmailOutlook } from '../services/outlookService';
+import { sendEmailGmail,getAuthUrl } from '../services/googleService';
+import { sendEmailOutlook, setCredentials } from '../services/outlookService';
 
 export const receiveEmail = async (req: Request, res: Response) => {
   // Handle receiving email
@@ -16,9 +16,9 @@ export const classifyAndRespond = async (req: Request, res: Response) => {
   // Example: determine service to use (Gmail/Outlook) and send response
   if (label === 'Interested' || label === 'More information') {
     // Example for Gmail
-    await sendEmailGmail(/* oauth2Client, to, subject, response */);
+    await sendEmailGmail("kanjiyayash27@gmail.com","cool","yash");
     // Example for Outlook
-    await sendEmailOutlook(/* accessToken, to, subject, response */);
+    await sendEmailOutlook("123","kanjiyayash27@gmail.com","microsoft mail","cool");
   }
 
   res.status(200).send({ label, response });

@@ -1,4 +1,6 @@
-// BullMQ configuration
-import { configureBullMQ } from '../services/bullmqService';
+// // BullMQ configuration
+// import { configureBullMQ } from '../services/bullmqService';
 
-configureBullMQ();
+// configureBullMQ();
+
+

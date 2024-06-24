@@ -1,7 +1,11 @@
 import { Queue, Worker } from 'bullmq';
 import { classifyEmail, generateResponse } from './openAIService';
 import { sendEmailGmail } from './googleService';
-import { sendEmailOutlook } from './outlookService';
+import { sendEmailOutlook, setCredentials } from './outlookService';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const connection = {
   host: process.env.REDIS_HOST || 'localhost',
@@ -19,9 +23,9 @@ export const configureBullMQ = () => {
     // Example: determine service to use (Gmail/Outlook) and send response
     if (label === 'Interested' || label === 'More information') {
       // Example for Gmail
-      await sendEmailGmail(/* oauth2Client, to, subject, response */);
+      await sendEmailGmail("kanjiyayash27@gmail.com","google api check","cool");
       // Example for Outlook
-      await sendEmailOutlook(/* accessToken, to, subject, response */);
+      await sendEmailOutlook(setCredentials.toString(),"kanjiyayash27@gmail.com", "yash kanjiya","cool");
     }
   }, { connection });
 };

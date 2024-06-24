@@ -1,27 +1,32 @@
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
+import dotenv from 'dotenv';
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY
+dotenv.config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Ensure you have your API key set in your environment variables
 });
 
-const openai = new OpenAIApi(configuration);
-
-export const classifyEmail = async (content: string): Promise<string> => {
-  const response = await openai.createCompletion({
+export const classifyEmail = async (emailContent: string): Promise<string> => {
+  // Use the OpenAI API to classify the email
+  const response = await openai.completions.create({
     model: 'text-davinci-003',
-    prompt: `Classify the following email content into one of the categories: Interested, Not Interested, More information:\n\n${content}`,
-    max_tokens: 50
+    prompt: `Classify the following email content: ${emailContent}`,
+    max_tokens: 10,
   });
 
-  return response.data.choices[0].text.trim();
+  const label = response.choices[0].text?.trim() || '';
+  return label;
 };
 
-export const generateResponse = async (content: string): Promise<string> => {
-  const response = await openai.createCompletion({
+export const generateResponse = async (emailContent: string): Promise<string> => {
+  // Use the OpenAI API to generate a response
+  const response = await openai.completions.create({
     model: 'text-davinci-003',
-    prompt: `Generate an appropriate reply for the following email content:\n\n${content}`,
-    max_tokens: 150
+    prompt: `Generate a response to the following email content: ${emailContent}`,
+    max_tokens: 150,
   });
 
-  return response.data.choices[0].text.trim();
+  const generatedResponse = response.choices[0].text?.trim() || '';
+  return generatedResponse;
 };

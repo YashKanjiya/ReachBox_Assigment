@@ -1,6 +1,6 @@
 import express from 'express';
 import { emailRoutes } from './routes/emailRoutes';
-import { configureBullMQ } from './config/bullmqConfig';
+import { configureBullMQ } from './services/bullmqService';
 import dotenv from 'dotenv';
 
 dotenv.config();

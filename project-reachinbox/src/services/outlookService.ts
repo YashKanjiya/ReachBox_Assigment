@@ -1,6 +1,10 @@
 import { ConfidentialClientApplication } from '@azure/msal-node';
 import { Client } from '@microsoft/microsoft-graph-client';
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 const config = {
   auth: {
     clientId: process.env.OUTLOOK_CLIENT_ID!,
@@ -24,7 +28,6 @@ export const setCredentials = async (code: string) => {
     scopes: ['https://graph.microsoft.com/.default'],
     redirectUri: process.env.OUTLOOK_REDIRECT_URL!
   });
-
   return tokenResponse.accessToken;
 };
 
